@@ -1,4 +1,172 @@
-Desafio 1
-SELECT Name
-FROM production.Product
-WHERE Weigth > 500 and <= 700
+ 1) A EQUIPE DE MARKETING PRECISA DE FAZER UMA PESQUISA SOBRE NOMES MAIS COMUNS DE SEUS CLIENTES E PRECISA DO NOME E SOBRENOME DE TODOS OS CLIENTES QUE ESTÃO CADASTRADOS NO SISTEMA
+
+SELECT FirstName, MiddleName, LastName
+from person.Person;
+
+2) QUANTOS SOBRENOMES ÚNICOS TEMOS EM NOSSA TABELA PERSON.PERSON?
+
+SELECT DISTINCT lastname
+FROM person.Person;
+
+3) a equipe de produção de produtos precisa do nome de todas as peças que pesam mais de 500 kg mas não mais que 700 kg para inspeção
+
+SELECT *
+from production.product
+where Weight > 500 and weight <= 700;
+
+4) foi pedido pelo marketing uma relação de todos os empregados (employees) que são casados (single=solteiro, married = casado)  e são assalariados (salaried)
+
+select * 
+from HumanResources.Employee
+where MaritalStatus = 'M' and SalariedFlag = 1;
+
+
+- um user chamado Peter Krebs está devendo um pagamento, consiga o email dele para que possamos enviar uma cobrança!
+-peter0@adventure-works.com
+
+SELECT *
+From person.Person
+WHERE FirstName = 'PETER' AND LastName = 'Krebs';
+
+select *
+from person.EmailAddress
+where BusinessEntityID = 26;
+
+- saber quantos produtos temos cadastrados em nossa tabela de produtos
+
+SELECT count(*)
+from Production.Product;
+
+- saber quantos tamanhos de produtos temos cadastrado em nossa tabela
+
+SELECT count(Size)
+from Production.Product;
+
+SELECT TOP 10 *
+from Production.Product;
+
+- obter o ProductId dos 10 produtos mais caros cadastrados no sistema, listando do mais caro para o mais barato
+
+SELECT top 10 ProductID
+from Production.Product 
+order by ListPrice desc;
+
+- obter o nome e número do produto dos produtos que tem o ProductID entre 1-4
+
+select name,ProductNumber
+from Production.Product
+where ProductID between 1 and 4;
+
+select *
+from person.Person
+where BusinessEntityID IN(2,7,13)
+
+- quantos produtos temos cadastrado no sistema que custam mais de 1500 dólares?
+
+select count(listprice)
+from Production.Product
+where ListPrice > 1500
+
+- quantas pessoas temos com o sobrenome que inicia com a letra P
+
+SELECT count(LastName)
+from person.Person
+where LastName like 'p%';
+
+- em quantas cidades unicas estão cadastrados nossos clientes?
+
+select count(distinct(city))
+FROM person.Address;
+
+
+- QUAIS SÃO AS CIDADES UNICAS QUE TEMOS CADASTRADAS EM NOSSO SISTEMA?
+
+select distinct city
+from person.Address;
+
+- quantos produtos vermelhos tem preço entre 500 a 1000 dólares
+
+select count(*)
+from Production.Product
+where Color = 'Red' and ListPrice between 500 and 1000
+
+- quantos produtos cadastrados tem a palavra 'road' no nome deles?
+
+select count(*)
+from Production.Product
+where name like '%road%';
+
+- saber quantas pessoas tem o mesmo middlename agrupadas por middle name
+
+
+select middlename, count (MiddleName) as "MiddleNamePerson"
+from person.Person
+GROUP BY MiddleName;
+
+- saber em media qual é a quantidade(quantity) que cada produto é vendido na loja
+select productID, avg(OrderQty) as 'contaloja'
+from sales.SalesOrderDetail
+group by ProductID
+
+- saber qual foram as 10 vendas que no total tiveram os maiores valores de venda (line total) por produto do maior valor para o menor
+
+select top 10 productid, sum(linetotal)
+from sales.SalesOrderDetail
+group by ProductID
+order by sum(linetotal) desc
+
+- quantos produtos e qual a quantidade media de produtos temos cadastrados nas nossas ordem de serviço(workorder), agrupados por productId
+
+select ProductID,count(productid) 'apresentacao',
+AVG(orderqty) as 'media'
+from production.workOrder
+group by ProductID
+
+- identificar as provincias com o maior numero de cadastros no nosso sistema, entao é preciso encontrar quais provincias estão registradas no banco de
+dados mais que 1000 vezes
+
+select stateprovinceid,count(stateprovinceid) 'qtdd'
+from person.Address
+group by stateprovinceid
+having count(stateprovinceid) > 1000
+
+- os gerentes querem saber quais produtos não estão trazendo em média no minimo 1 milhao em total de vendas
+
+
+select productid,avg(linetotal)
+from sales.SalesOrderDetail
+group by ProductID
+having avg(linetotal) <1000000
+
+- inner join
+
+select pp.businessentityid,pt.name,pt.phonenumbertypeid,pp.phonenumber
+from Person.PersonPhone PP
+INNER JOIN person.PhoneNumberType PT ON PT.PhoneNumberTypeID = pp.PhoneNumberTypeID
+
+SELECT TOP 10 PA.Addressid,PA.city,PS.stateprovinceid,ps.name
+from person.Address PA
+INNER JOIN person.StateProvince PS ON PS.StateProvinceID = pa.StateProvinceID
+
+- descobrir quais pessoas tem um cartão de crédito registrado
+
+select * 
+from Person.Person PP
+INNER JOIN Sales.PersonCreditCard PC
+ON PP.BusinessEntityID = pc.BusinessEntityID
+
+-  detalhe do pedido quais produtos tem o mesmo percentual de desconto
+
+select a.productid, a.discount,b.productid, b.discount
+from [Order Details] A, [Order Details] b
+where A.discount = b.discount
+
+
+- subselect
+-encontre todos os endereços no estado de alberta
+select *
+from person.Address
+where stateprovinceid IN (
+SELECT stateprovinceid from person.StateProvince
+where name = 'Alberta'
+)
