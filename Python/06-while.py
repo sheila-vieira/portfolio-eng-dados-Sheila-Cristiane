@@ -6,12 +6,14 @@ Aqui eu pratiquei o laço while, que repete enquanto uma condição for verdadei
 Também usei um loop infinito com break para encerrar quando o usuário digita 'x'.
 """
 
+#Ex 1:
 num = 1
 while num <= 10:
     print(num)
     num += 1
 print("Laço encerrado.")
 
+#Ex 2:
 while True:
     nome = input("Digite seu nome (ou 'x' para encerrar): ").strip()
 

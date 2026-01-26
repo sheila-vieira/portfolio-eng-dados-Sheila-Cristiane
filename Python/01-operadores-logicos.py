@@ -7,6 +7,7 @@ Usei AND para exigir duas condições verdadeiras, OR para aceitar uma delas,
 e NOT para inverter um valor booleano.
 """
 
+#Ex 1:
 idade = 19
 altura = 1.75
 
