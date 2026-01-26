@@ -1,1 +1,178 @@
+# Operadores Lógicos
 
+idade = 19
+altura = 1.75
+
+resultado = idade >= 18 and altura >= 1.70
+print("A pessoa é maior de idade e tem altura suficiente:", resultado)
+
+resultado = idade < 18 or altura < 1.70
+print("A pessoa é menor de idade ou tem altura insuficiente:", resultado)
+
+#programa de disparo de alarme
+porta = 'f'
+janela = 'a'
+
+alarme = (porta == 'a' or janela == 'a')
+print("Disparar alarme:", alarme)
+
+#programa de compra
+tem_dinheiro = False
+tem_dinheiro = not tem_dinheiro
+msg = 'Tem dinheiro para comprar? ' + str(tem_dinheiro)
+print(msg)
+
+# Operadores de Comparação
+
+x = y = z = False
+n1 = n2 = 0
+
+print("Digite um número: ")
+n1 = int(input())
+n2 = int(input("Digite outro número: "))
+
+x = n1 == n2 
+print('São iguais?', x, '\n')
+
+z = n1 > n2
+print(n1, 'é maior que', n2,'?', z, '\n')
+
+y = n1 != n2
+print('São diferentes?' + str(y))
+
+# Operadores Artméticos
+
+x = y = z = 0
+x = 7
+y = 9
+
+z = x + y
+print('A soma de {} + {} é igual a {}'.format(x, y, z))
+
+
+x = int(input("Digite um número: "))
+y = int(input("Digite um número: "))
+z = x + y
+print('A soma de {} + {} é igual a {}'.format(x, y, z))
+
+#Print
+
+#sintaxe :
+# print(objetos, argumentos)
+
+mensagem = 'Função print em Python'
+print(mensagem)
+print("Aula de python")
+
+nome = 'Sheila'
+print("Olá,", nome)
+
+nome = input("Digite seu nome: ")
+print("olá" + nome + ', seja bem-vindo(a)!')
+
+print('Imprime a mensagem e muda de linha')
+print('Imprime a mensagem sem mudar de linha', end=' ')
+print(' Continuação da mensagem na mesma linha')
+
+a = 10
+b = 5
+res = f'A soma de {a} + {b} é igual a {a + b}'
+print(res)
+
+valor = 125.795585
+print(f'O valor é {valor:.2f}')  # limita a 2 casas decimais
+
+valor = 125.795585
+print(f'O valor é \'{valor:.2f}\'')  # limita a 2 casas decimais
+
+nome = 'Sheila Cristiane'
+idade = 19
+print(f'Nome: {nome}\tIdade: {idade}')  # \t adiciona uma tabulação entre os valores
+
+#Variáveis 
+media = 0
+n1 = n2 = n3 = n4 = 0.5
+nome, idade = 'Sheila', 30
+estado = True
+a = 10
+b = 'sol'
+#Função type() mostra o tipo da variável
+#Ctrl + k + c comenta a linha selecionada
+# Ctrl + k + u descomenta a linha selecionada
+print(type(media))
+print(type(nome))
+print(type(n1))
+print(type(estado))
+
+#Função isinstance() verifica se a variável é do tipo especificado
+print(isinstance(idade, int))
+print(isinstance(nome, str))
+print(isinstance(a, str))
+
+#While
+
+num = 1
+
+while (num <= 10):
+    print(num)
+    num += 1
+print("Laço encerrado.")
+
+nome = None
+
+while True:
+    print("Digite seu nome (ou 'x' para encerrar): ")
+    nome = input()
+    if nome == 'x' or nome =='X':
+        break
+    print(f"Olá, {nome}!")
+print("Até logo!")
+
+# Condicionais
+
+# simples, composto, encadeado
+
+n1 = float(input("Digite a nota 1: "))
+n2 = float(input("Digite a nota 2: "))
+media = (n1 + n2) / 2
+if media >=7:
+    print("Resultado: Aprovado")
+elif media >=5 and media <7:
+    print("Resultado: Recuperação")
+else:
+    print("Resultado: Reprovado")
+
+print("Sua Média é {}".format(media))
+
+
+# For
+
+lista = [1, 2, 3, 4, 5]
+
+for item in lista:
+    print(f"Item da lista: {item}")
+
+palavra = "Python"
+
+for letra in palavra:
+    print(f"Letra: {letra}")    
+
+for numero in range(1, 11): #gera até n-1
+    print(f"Número atual: {numero}")
+
+nome = input('Digite seu nome: ')
+for x in range(10): #pra mostar até 10, na hora de imprimir, soma mais 1
+    print(f"{x+1} - Olá, {nome}!")
+
+range(valor_inicial, valor_final, incremento)
+for x in range(2,20,2):
+    print(x)
+
+for x in range(5,0,-1):
+    print(x)
+
+pedras = ("ametista", "quartzo rosa", "jade", "turmalina", "ágata")
+for pedra in pedras:
+    if pedra == "quartzo rosa":
+        continue
+    print(pedra)
