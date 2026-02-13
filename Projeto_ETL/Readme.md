@@ -1,4 +1,4 @@
-# 📊 Projeto ETL – Pipeline de Dados (Bronze → Silver → PostgreSQL)
+#  Projeto ETL – Pipeline de Dados (Bronze → Silver → PostgreSQL)
 
 Este projeto implementa um **pipeline ETL completo**, desde a ingestão de dados brutos até a persistência em banco de dados PostgreSQL, seguindo boas práticas de organização em camadas (**Bronze / Silver**) e preparação para análise exploratória.
 
@@ -6,7 +6,7 @@ O objetivo é demonstrar habilidades em **engenharia de dados**, **tratamento de
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+##  Arquitetura do Projeto
 
 Projeto_ETL/
 ├── 01.bronze.raw/
@@ -24,9 +24,9 @@ Projeto_ETL/
 └── README.md
 
 
-## 🔄 Fluxo do Pipeline ETL
+##  Fluxo do Pipeline ETL
 
-### 1️⃣ Camada Bronze – Dados Brutos
+### 1️ Camada Bronze – Dados Brutos
 - Dados armazenados sem tratamento
 - Formatos suportados:
   - CSV
@@ -35,7 +35,7 @@ Projeto_ETL/
 
 ---
 
-### 2️⃣ Camada Silver – Dados Tratados
+### 2️ Camada Silver – Dados Tratados
 O script `normalize_data.py` executa as seguintes etapas:
 
 - Leitura dos arquivos da camada Bronze
@@ -48,7 +48,7 @@ Essa etapa garante dados **consistentes, deduplicados e prontos para consumo ana
 
 ---
 
-### 3️⃣ Persistência em Banco de Dados (PostgreSQL)
+### 3️ Persistência em Banco de Dados (PostgreSQL)
 Os arquivos Parquet da camada Silver são carregados no PostgreSQL utilizando:
 
 - Docker + docker-compose
@@ -61,7 +61,7 @@ Cada arquivo Parquet gera automaticamente uma tabela no banco.
 
 ---
 
-## 🐳 Banco de Dados (Docker)
+##  Banco de Dados (Docker)
 
 O PostgreSQL é executado via Docker com a seguinte configuração:
 
@@ -77,7 +77,7 @@ Para subir o banco de dados:
 ```bash
 docker-compose up -d
 
-📈 Análise Exploratória de Dados
+Análise Exploratória de Dados
 
 O notebook Data_View_ETL.ipynb realiza:
 
@@ -95,7 +95,7 @@ Gráficos simples para validação dos dados
 
 Essa etapa valida a qualidade dos dados após o ETL e demonstra preparo para análises posteriores.
 
-🧰 Tecnologias Utilizadas
+Tecnologias Utilizadas
 
 Python
 
@@ -111,28 +111,28 @@ Matplotlib
 
 Jupyter Notebook
 
-▶️ Como Executar o Projeto
+Como Executar o Projeto
 
-1️⃣ Subir o banco de dados:
+1️ Subir o banco de dados:
 
 docker-compose up -d
 
 
-2️⃣ Executar o pipeline de normalização:
+2️ Executar o pipeline de normalização:
 
 python normalize_data.py
 
 
-3️⃣ Carregar os dados no PostgreSQL:
+3️ Carregar os dados no PostgreSQL:
 
 python load_to_db.py
 
 
-4️⃣ Abrir o notebook para análise exploratória:
+4️ Abrir o notebook para análise exploratória:
 
 jupyter notebook Data_View_ETL.ipynb
 
-🎯 Objetivo do Projeto
+Objetivo do Projeto
 
 Este projeto foi desenvolvido com foco em portfólio, demonstrando:
 
