@@ -9,22 +9,20 @@ O objetivo é demonstrar habilidades em **engenharia de dados**, **tratamento de
 ## 🏗️ Arquitetura do Projeto
 
 Projeto_ETL/
-
-'''
-├── 01.bronze.raw/ # Dados brutos (CSV, JSON)
-│ ├── users.csv
-│ └── cryptocurrencies.json
+├── 01.bronze.raw/
+│   ├── users.csv
+│   └── cryptocurrencies.json
 │
-├── 02.silver.validated/ # Dados tratados (Parquet)
+├── 02.silver.validated/
 │
-├── normalize_data.py # Pipeline de normalização (Bronze → Silver)
-├── load_to_db.py # Carga dos dados Silver no PostgreSQL
-├── db.py # Classe de conexão e operações no banco
+├── normalize_data.py
+├── load_to_db.py
+├── db.py
 │
-├── docker-compose.yml # Ambiente PostgreSQL via Docker
-├── Data_View_ETL.ipynb # Notebook de análise exploratória
+├── docker-compose.yml
+├── Data_View_ETL.ipynb
 └── README.md
-'''
+
 
 ## 🔄 Fluxo do Pipeline ETL
 
