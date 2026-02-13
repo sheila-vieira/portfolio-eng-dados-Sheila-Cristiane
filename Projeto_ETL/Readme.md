@@ -9,10 +9,11 @@ O objetivo é demonstrar habilidades em **engenharia de dados**, **tratamento de
 ## 🏗️ Arquitetura do Projeto
 
 Projeto_ETL/
-│
+
+'''
 ├── 01.bronze.raw/ # Dados brutos (CSV, JSON)
 │ ├── users.csv
-│ ├── cryptocurrencies.json
+│ └── cryptocurrencies.json
 │
 ├── 02.silver.validated/ # Dados tratados (Parquet)
 │
@@ -22,11 +23,8 @@ Projeto_ETL/
 │
 ├── docker-compose.yml # Ambiente PostgreSQL via Docker
 ├── Data_View_ETL.ipynb # Notebook de análise exploratória
-│
 └── README.md
-
-
----
+'''
 
 ## 🔄 Fluxo do Pipeline ETL
 
